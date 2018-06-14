@@ -1,0 +1,42 @@
+INSERT INTO fakultet values (nextval('fakultet_seq'),'Fakultet tehnickih nauka', 'Novi Sad');
+INSERT INTO fakultet values (nextval('fakultet_seq'),'Prirodno-matematicki fakultet', 'Novi Sad');
+INSERT INTO fakultet values (nextval('fakultet_seq'),'Pravni fakultet', 'Novi Sad');
+INSERT INTO fakultet values (nextval('fakultet_seq'),'Poljoprivredni fakultet', 'Novi Sad');
+
+INSERT INTO departman values (nextval('departman_seq'),'Departman za arhitekturu i urbanizam', 'DAU', 1);
+INSERT INTO departman values (nextval('departman_seq'),'Departman za energeniku, elektroniku i telekomunikacije','DEET', 1);
+INSERT INTO departman values (nextval('departman_seq'),'Departman za graficko inzenjerstvo i dizajn','DGID', 1);
+INSERT INTO departman values (nextval('departman_seq'),'Departman za industrijsko inzenjerstvo i menadzment','DIIM', 1);
+INSERT INTO departman values (nextval('departman_seq'),'Departman za gradjevinarstvo i geodeziju','DGG', 1);
+INSERT INTO departman values (nextval('departman_seq'),'Departman za biologiju i ekologiju','DBE', 2);
+INSERT INTO departman values (nextval('departman_seq'),'Departman za matematiku i informatiku','DMI', 2);
+INSERT INTO departman values (nextval('departman_seq'),'Departman za stocarstvo','DS', 4);
+INSERT INTO departman values (nextval('departman_seq'),'Departman za uredjenje voda','DUV', 4);
+INSERT INTO departman values (nextval('departman_seq'),'Departman za poljoprivrednu tehniku','DPT', 4);
+INSERT INTO departman values (nextval('departman_seq'),'Departman za veterinarsku medicinu','DVM', 4);
+
+INSERT INTO status values (nextval('status_seq'),'Samofinansiranje','SF');
+INSERT INTO status values (nextval('status_seq'),'Budzet','BU');
+
+INSERT INTO student values (nextval('student_seq'),'Marko', 'Markovic', '1/2014',2,1);
+INSERT INTO student values (nextval('student_seq'),'Petar', 'Petrovic', '2/2014',1,1);
+INSERT INTO student values (nextval('student_seq'),'Mirko', 'Mirkovic', '3/2014',2,2);
+INSERT INTO student values (nextval('student_seq'),'Milos', 'Milosevic', '4/2014',2,2);
+INSERT INTO student values (nextval('student_seq'),'Tomislav', 'Tomic', '5/2014',1,3);
+INSERT INTO student values (nextval('student_seq'),'Mira', 'Miric', '6/2014',2,3);
+INSERT INTO student values (nextval('student_seq'),'Jelena', 'Jakic', '7/2014',2,4);
+INSERT INTO student values (nextval('student_seq'),'Uros', 'Uric', '8/2015',1,4);
+INSERT INTO student values (nextval('student_seq'),'Dragan', 'Peric', '9/2015',2,5);
+INSERT INTO student values (nextval('student_seq'),'Jovana', 'Jovanovic', '10/2015',2,5);
+INSERT INTO student values (nextval('student_seq'),'Jovan', 'Jovic', '11/2015',1,6);
+INSERT INTO student values (nextval('student_seq'),'Mirko', 'Markovic', '12/2015',2,6);
+INSERT INTO student values (nextval('student_seq'),'Sonja', 'Sojic', '13/2015',2,7);
+INSERT INTO student values (nextval('student_seq'),'Stanko', 'Mirkovic', '15/2015',1,7);
+INSERT INTO student values (nextval('student_seq'),'Stefan', 'Stevic', '16/2015',2,8);
+INSERT INTO student values (nextval('student_seq'),'Milisav', 'Petrovic', '17/2015',2,8);
+INSERT INTO student values (nextval('student_seq'),'Sanja', 'Stankovic', '18/2015',2,9);
+INSERT INTO student values (nextval('student_seq'),'Sava', 'Pajic', '19/2015',2,9);
+INSERT INTO student values (nextval('student_seq'),'Nemanja', 'Petrovic', '20/2015',1,10);
+INSERT INTO student values (nextval('student_seq'),'Jovan', 'Todorovic', '21/2015',2,10);
+INSERT INTO student values (nextval('student_seq'),'Milos', 'Zivkovic', '22/2015',1,11);
+INSERT INTO student values (nextval('student_seq'),'Dusan', 'Perovic', '23/2015',2,11);
