@@ -52,7 +52,7 @@ public class DepartmanRestController {
 	//DELETE
 	@CrossOrigin
 	@Transactional
-	@DeleteMapping("departman")
+	@DeleteMapping("departman/{id}")
 	public ResponseEntity<Departman> deleteStudent(@PathVariable ("id") Integer id){
 		if(!departmanRepository.existsById(id))
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);

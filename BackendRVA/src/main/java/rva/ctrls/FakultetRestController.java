@@ -60,7 +60,7 @@ public class FakultetRestController {
 	@PutMapping("fakultet")
 	@ApiOperation(value="Modifikuje postojeci fakultet u bazi podataka")
 	public ResponseEntity<HttpStatus> updateFakultet(@RequestBody Fakultet fakultet){
-		if(!fakultetRepository.existsById(fakultet.getId())) {
+		if(fakultetRepository.existsById(fakultet.getId())) {
 			fakultetRepository.save(fakultet);
 			return new ResponseEntity<HttpStatus>(HttpStatus.OK);
 		}

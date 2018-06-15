@@ -43,7 +43,7 @@ public class StatusRestController {
 	
 	//DELETE
 	@CrossOrigin
-	@DeleteMapping("status")
+	@DeleteMapping("status/{id}")
 	public ResponseEntity<Status> deleteStatus(@PathVariable ("id") Integer id){
 		if(!statusRepository.existsById(id))
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
