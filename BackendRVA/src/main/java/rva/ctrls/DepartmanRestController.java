@@ -53,6 +53,7 @@ public class DepartmanRestController {
 	@CrossOrigin
 	@Transactional
 	@DeleteMapping("departman/{id}")
+	@ApiOperation(value = "Brise departman sa prosledjenim id-jem kao path varijablu")
 	public ResponseEntity<Departman> deleteStudent(@PathVariable ("id") Integer id){
 		if(!departmanRepository.existsById(id))
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -63,6 +64,7 @@ public class DepartmanRestController {
 	//INSERT
 	@CrossOrigin
 	@PostMapping("departman")
+	@ApiOperation(value = "Upisuje departman u bazu")
 	public ResponseEntity<Departman> insertDepartman(@RequestBody Departman departman){
 		if(!departmanRepository.existsById(departman.getId())) {
 			departmanRepository.save(departman);
@@ -74,6 +76,7 @@ public class DepartmanRestController {
 	//UPDATE
 	@CrossOrigin
 	@PutMapping("departman")
+	@ApiOperation(value = "Modifikuje postojeci departman u bazi")
 	public ResponseEntity<Departman> updateDepartman(@RequestBody Departman departman){
 		if(!departmanRepository.existsById(departman.getId())) 
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
