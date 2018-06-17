@@ -52,10 +52,14 @@ public class StatusRestController {
 	@DeleteMapping("status/{id}")
 	@ApiOperation(value="Brise status iz baze podataka na osnovu prosledjenog id-ja kroz path varijablu")
 	public ResponseEntity<Status> deleteStatus(@PathVariable ("id") Integer id){
-		if(!statusRepository.existsById(id))
+		if(statusRepository.existsById(id)) {
+			jdbcTemplate.execute("Delete from student where status =" + id);
+			jdbcTemplate.execute("Delete from status where id =" + id);
+			statusRepository.deleteById(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-		statusRepository.deleteById(id);
+		}
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		
 	}
 	
 	//INSERT

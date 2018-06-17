@@ -2,6 +2,8 @@ package rva.ctrls;
 
 import java.util.Collection;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -46,6 +48,7 @@ public class FakultetRestController {
 		return fakultetRepository.findByNazivContainingIgnoreCase(naziv);
 	}
 	
+	
 	@CrossOrigin
 	@PostMapping("fakultet")
 	@ApiOperation(value="Upisuje fakultet u bazu podataka")
@@ -68,11 +71,19 @@ public class FakultetRestController {
 	}
 	
 	@CrossOrigin
+	@Transactional
 	@DeleteMapping("fakultet/{id}")
 	@ApiOperation(value="Brise iz baze podataka fakultet ciji je id vrednost prosledjena kao path varijabla ")
 	public ResponseEntity<HttpStatus> deleteFakultet(@PathVariable("id") Integer id){
 		if(fakultetRepository.existsById(id)) 
+		{
+			jdbcTemplate.execute("Delete from student where departman in (Select id from departman where fakultet = "+id+")" );
+			jdbcTemplate.execute("Delete from departman where fakultet = "+id);
 			fakultetRepository.deleteById(id);
-		return new ResponseEntity<HttpStatus>(HttpStatus.NO_CONTENT);
+			return new ResponseEntity<HttpStatus>(HttpStatus.OK);
+		}
+			return new ResponseEntity<HttpStatus>(HttpStatus.NO_CONTENT);
+		
+		
 	}
 }

@@ -20,14 +20,18 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import rva.jpa.Departman;
+import rva.jpa.Fakultet;
 import rva.jpa.Student;
 import rva.reps.DepartmanRepository;
+import rva.reps.FakultetRepository;
 
 @RestController
 @Api(tags= {"Departman CRUD operacije"})
 public class DepartmanRestController {
 	@Autowired
 	private DepartmanRepository departmanRepository;
+	@Autowired
+	private FakultetRepository fakultetRepository;
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
@@ -49,6 +53,12 @@ public class DepartmanRestController {
 		return departmanRepository.findByNazivContainingIgnoreCase(naziv);
 	}
 	
+	@GetMapping("departmanFakultet/{id}")
+	public Collection<Departman> getDepartmanByFakultet(@PathVariable ("id") Integer id){
+		Fakultet f = fakultetRepository.getOne(id);
+		return departmanRepository.findByFakultet(f);
+	}
+	
 	//DELETE
 	@CrossOrigin
 	@Transactional
@@ -57,8 +67,8 @@ public class DepartmanRestController {
 	public ResponseEntity<Departman> deleteStudent(@PathVariable ("id") Integer id){
 		if(!departmanRepository.existsById(id))
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-		departmanRepository.deleteById(id);
 		jdbcTemplate.execute("Delete from student where departman = "+id);
+		departmanRepository.deleteById(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 	//INSERT
